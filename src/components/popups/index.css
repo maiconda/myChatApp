@@ -1,0 +1,98 @@
+.popups{
+    height: 100vh;
+    width: 100%;
+    background-color: #000000a2;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+    overflow-y: hidden;
+    z-index: -1;
+    opacity: 0;
+}
+
+.dashboard{
+    height: 450px;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #ecedf086;
+    position: absolute;
+}
+
+.closedash-div{
+    display: flex;
+    justify-content: end;
+    position: absolute;
+    width: 100%;
+}
+
+.closedash-div div{
+    background-color: #2781E3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.closedash-div svg{
+    transform: rotate(45deg);
+}
+
+.dashboard-infos{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dashboard-infos img{
+    border-radius: 30px;
+    height: 170px;
+    width: 170px;
+}
+
+.dashboard-infos-div{
+    background-color: #f4f6fb7a;
+    border: 1px solid #dadaddfd;
+    margin: 20px 25px;
+    border-radius: 20px;
+    padding: 18px;
+}
+
+.dashboard-infos h3{
+    text-align: center;
+    font-size: 27px;
+    margin: 0;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 10px;
+    color: 050609;
+}
+
+.dashboard-infos p{
+    margin: 0;
+    color: #666869;
+    font-weight: 500;
+}
+
+.dashboard button{
+    background-color: #2781E3;
+    margin: 0;
+    font-size: 22px;
+    color: white;
+    border: 0;
+    font-weight: 500;
+    margin: 0 20px;
+    width: calc(100% - 50px);
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}

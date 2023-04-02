@@ -1,0 +1,49 @@
+.userNewChat-div{
+    padding: 14px 20px;
+    transition: .3s;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+
+.userNewChat-div h3{
+    margin: 0;
+    font-size: 18px;
+    margin-bottom: 2px;
+    color: #202020;
+    margin-top: 3px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.userNewChat-div p{
+    margin: 0;
+    font-size: 14px;
+    color: #85878a;
+    font-weight: 500;
+
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 267px;
+    margin-bottom: 3px;
+}
+
+.userNewChat-div:hover{
+    border-top: 1px solid #ecedf0;
+    border-bottom: 1px solid #ecedf0;
+    background-color: #F5F7FB;
+    transition: .3s;
+}
+
+.userNewChat-div img{
+    height: 47px;
+    width: 47px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 15px;
+}

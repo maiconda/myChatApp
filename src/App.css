@@ -1,0 +1,147 @@
+main{
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+body{
+    background-color: hsl(220, 43%, 97%);
+}
+
+.sidebar{
+    height: 100vh;
+    width: 400px;
+    background-color: hsl(220, 43%, 97%);
+    padding:20px;
+    box-sizing: border-box;
+    padding-right: 0;
+}
+
+.sidebar-header{
+    display: flex;
+    min-height: 75px;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 40px -40px rgba(0, 0, 0, 0.808);
+    border: 1px solid #ecedf0;
+    align-items: center;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    border-radius: 18px;
+    justify-content: space-between;
+    padding-right: 17px;
+}
+
+.sidebar-infos{
+    display: flex;
+    align-items: center;
+    width: calc(100% - 55px);
+    line-height: 21px;
+}
+
+.sidebar-header img{
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    margin-right: 12px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.sidebar-header h3{
+    color: #050609;
+    font-size: 18px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.newMessage{
+    background-color: #2781E3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.messages-div{
+    background-color: white;
+    max-width: 100%;
+    height: calc(100% - 95px);
+    border-radius: 24px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 40px -40px rgba(0, 0, 0, 0.808);
+    border: 1px solid #ecedf0;
+    padding-bottom: 10px;
+}
+
+.search-div{
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.search{
+    border-radius: 17px;
+    width: 100%;
+    height: 50px;
+    background-color: #F5F7FB;
+    box-sizing: border-box;
+    padding-left: 17px;
+    display: flex;
+    align-items: center;
+    padding-right: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ecedf086;
+}
+
+.search input{
+    border: none;
+    width: 100%;
+    height: 45px;
+    background-color: #F5F7FB;
+    border-radius: 17px;
+    font-weight: 600;
+    color: #050609;
+    font-size: 16px;
+}
+
+.search input:focus{
+    outline: none;
+}
+
+.search input::placeholder{
+    font-size: 16px;
+    font-weight: 600;
+    color: #97999c;
+
+}
+
+.chats{
+    overflow-y: auto;
+    height: calc(100% - 100px);
+}
+
+.chats::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chats::-webkit-scrollbar-track {
+    background: none;
+}
+
+.chats::-webkit-scrollbar-thumb {
+    background-color: #e8eaee;
+}
+
+
+.content{
+    height: 100vh;
+    flex: 1;
+    background-color: #F5F7FB;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+
