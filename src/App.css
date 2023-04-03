@@ -2,10 +2,12 @@ main{
     display: flex;
     max-width: 1400px;
     margin: 0 auto;
+    
 }
 
 body{
     background-color: hsl(220, 43%, 97%);
+    overflow: hidden;
 }
 
 .sidebar{
@@ -144,4 +146,19 @@ body{
     padding: 20px;
 }
 
+@media (max-width: 870px){
+    .sidebar{
+        width: 330px;
+    }
+}
+
+@media (max-width: 700px){
+    .sidebar{
+        width: calc(100% - 20px);
+    }
+
+    .content{
+        display: none;
+    }
+}
 

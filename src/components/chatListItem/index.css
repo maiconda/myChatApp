@@ -42,6 +42,10 @@
     margin-bottom: 2px;
     color: #202020;
     margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 243px;
 }
 
 .lastmessage{
@@ -90,4 +94,81 @@
 .lastmessage-notification{
     color: #504f4f;
     font-weight: 600;
+}
+
+@media (max-width: 870px){
+
+    .chatListenner-div1 h3, .lastmessage{
+        width: 150px;
+    }
+}
+
+@media (max-width: 700px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 350px;
+    }
+}
+
+@media (max-width: 550px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 270px;
+    }
+}
+
+@media (max-width: 450px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 260px;
+    }
+
+    .chatListenner-div2{
+        display: none;
+    }
+}
+
+@media (max-width: 407px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 240px;
+    }
+}
+
+@media (max-width: 390px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 220px;
+    }
+}
+
+@media (max-width: 370px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 200px;
+    }
+}
+
+@media (max-width: 350px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 180px;
+    }
+}
+
+@media (max-width: 320px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 150px;
+    }
+}
+
+@media (max-width: 290px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 120px;
+    }
+}
+
+@media (max-width: 260px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 100px;
+    }
+}
+
+@media (max-width: 240px){
+    .chatListenner-div1 h3, .lastmessage{
+        width: 800px;
+    }
 }

@@ -92,7 +92,7 @@ function ChatWindow({activeChat, user, activeChatMessages}) {
             </div>
 
             <form onSubmit={sendMessage} className='chatwindow-inputdiv'>
-                <input id='sendInput' placeholder='Digite sua mensagem' onChange={(e)=> setMessage(e.target.value)} className='chatwindow-input' type="text" />
+                <input autocomplete="false" id='sendInput' placeholder='Digite sua mensagem' onChange={(e)=> setMessage(e.target.value)} className='chatwindow-input' type="text" />
                 <button className='send-button'>Enviar</button>
             </form>
         </div>

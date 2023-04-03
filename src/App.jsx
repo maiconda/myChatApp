@@ -27,6 +27,13 @@ function App() {
   }, [])
 
   useEffect(() => {
+    getChatlist()
+    getAllUsers()
+    setAllUsers(allUsersStatic)
+    getAllMessages()
+  }, [user])
+
+  useEffect(() => {
     setAllUsers(allUsersStatic)
   }, [allUsersStatic])
 
@@ -63,7 +70,6 @@ function App() {
     })
   }
 
-  console.log(chatlist)
 
   const getActiveChatMessages = () => {
     
@@ -91,14 +97,34 @@ function App() {
   }
 
   const openNewMessages = () => {
-    document.querySelector('.newChat').style.left = '+20px'
+    document.querySelector('.newChat').style.bottom = '20px'
   }
 
   const openDashboard = () => {
     document.querySelector('.popups').style.zIndex = '1'
     document.querySelector('.popups').style.opacity = '100%'
 
-}
+  }
+
+  const setChatInfos = (email, fullname, photoURL) => {
+    setActiveChat({
+      email: email,
+      fullname: fullname,
+      photoURL: photoURL
+    })
+
+    let chat = chatlist.filter(chat => chat.email === email)
+
+    db.collection('friendlist').doc(user.email).collection('list').doc(chat[0].email).set({
+      email: chat[0].email,
+      fullname: chat[0].fullname,
+      photoURL: chat[0].photoURL,
+      lastMessage: chat[0].lastMessage,
+      timeStamp: chat[0].timeStamp,
+      visited: true
+  })
+
+  }
 
   return (
   <Fragment>
@@ -111,12 +137,14 @@ function App() {
     <main>
 
       <section className="sidebar">
-        <NewChat
+
+      <NewChat
         allUsers={allUsers}
         setAllUsers={setAllUsers}
         allUsersStatic={allUsersStatic}
-        setActiveChat={setActiveChat}
+        setChatInfos={setChatInfos}
         />
+
           <div className='sidebar-header'>
             <div className='sidebar-infos'>
               <img onClick={openDashboard} src={user.photoURL} alt="" />
@@ -131,7 +159,7 @@ function App() {
           <div className='messages-div'>
             <div className='search-div'>
               <div className='search'>
-                <input spellCheck='false' placeholder='Pesquisar' type="text" />
+                <input autocomplete="off" spellCheck='false' placeholder='Pesquisar' type="text" />
                 <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11ZM11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C13.125 20 15.078 19.2635 16.6177 18.0319L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L18.0319 16.6177C19.2635 15.078 20 13.125 20 11C20 6.02944 15.9706 2 11 2Z" fill="#97999c"/>
                 </svg>
@@ -144,21 +172,7 @@ function App() {
                   key={index}
 
                   onClick={()=>{
-                    setActiveChat({
-                      email: chat.email,
-                      fullname: chat.fullname,
-                      photoURL: chat.photoURL
-                    })
-
-                    db.collection('friendlist').doc(user.email).collection('list').doc(chat.email).set({
-                      email: chat.email,
-                      fullname: chat.fullname,
-                      photoURL: chat.photoURL,
-                      lastMessage: chat.lastMessage,
-                      timeStamp: chat.timeStamp,
-                      visited: true
-                  })
-
+                    setChatInfos(chat.email, chat.fullname, chat.photoURL)
                   }}
                   img={chat.photoURL}
                   name={chat.fullname}

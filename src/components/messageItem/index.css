@@ -61,3 +61,15 @@
 .spacedMessage-bottom{
     margin-bottom: 20px;
 }
+
+@media (max-width: 1000px){
+    .message-item{
+        max-width: calc(100% - 120px);
+    }
+}
+
+@media (max-width: 750px){
+    .message-item{
+        max-width: 100%;
+    }
+}

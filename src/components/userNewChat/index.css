@@ -47,3 +47,77 @@
     object-fit: cover;
     margin-right: 15px;
 }
+
+@media (max-width: 700px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 400px;
+    }
+}
+
+@media (max-width: 550px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 300px;
+    }
+}
+
+@media (max-width: 450px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 260px;
+    }
+}
+
+@media (max-width: 407px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 240px;
+    }
+}
+
+@media (max-width: 390px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 220px;
+    }
+}
+
+@media (max-width: 370px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 200px;
+    }
+}
+
+@media (max-width: 350px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 180px;
+    }
+}
+
+@media (max-width: 320px){
+    .userNewChat-div h3, .userNewChat-div p{
+        width: 150px;
+    }
+
+    .newChat-header h3{
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 150px;
+    }
+}
+
+@media (max-width: 290px){
+    .userNewChat-div h3, .userNewChat-div p, .newChat-header h3{
+        width: 120px;
+    }
+
+}
+
+@media (max-width: 260px){
+    .userNewChat-div h3, .userNewChat-div p, .newChat-header h3{
+        width: 100px;
+    }
+}
+
+@media (max-width: 240px){
+    .userNewChat-div h3, .userNewChat-div p, .newChat-header h3{
+        width: 80px;
+    }
+}
