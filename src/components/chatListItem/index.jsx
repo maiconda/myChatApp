@@ -11,7 +11,7 @@ function ChatListItem (props) {
                 </div>
             </div>
             <div className='chatListenner-div2'>
-                <p>10:23</p>
+                <p>{props.hour}</p>
                 <span className={`chatListenner-notification ${props.notificationClass}`}></span>
             </div>
         </div>

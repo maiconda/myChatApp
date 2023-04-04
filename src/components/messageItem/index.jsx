@@ -5,7 +5,7 @@ function MessageItem(props) {
         <div className={`message-item-div ${props.myMessageClass}`}>
             <div className={`message-item ${props.spacedMessage}`}>
                 <p>{props.body}</p>
-                <p>10:20</p>
+                <p>{props.hour}</p>
             </div>
         </div>
     )

@@ -16,21 +16,18 @@ function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
   const [allUsers, setAllUsers] = useState([])
   const [allUsersStatic, setAllUsersStatic] = useState([])
-  const [allMyMessages, setAllMyMessages] = useState([])
   const [activeChatMessages, setActiveChatMessages] = useState([])
 
   useEffect(() => {
     getChatlist()
     getAllUsers()
     setAllUsers(allUsersStatic)
-    getAllMessages()
   }, [])
 
   useEffect(() => {
     getChatlist()
     getAllUsers()
     setAllUsers(allUsersStatic)
-    getAllMessages()
   }, [user])
 
   useEffect(() => {
@@ -38,25 +35,11 @@ function App() {
   }, [allUsersStatic])
 
   useEffect(() => {
-    getActiveChatMessages()
+    if (activeChat.email !== undefined) {
+      setActiveChatMessages([])
+      getActiveChatMessages()
+    }
   }, [activeChat])
-
-
-  useEffect(() => {
-    getActiveChatMessages()
-  } , [allMyMessages])
-
-  const getAllMessages = async () => {
-    const data = await db
-    .collection('chats')
-    .doc(user.email)
-    .collection('messages')
-    .orderBy('timeStamp', 'asc')
-    .onSnapshot((snapShot) => {
-      let messages = snapShot.docs.map((doc) => doc.data())
-      setAllMyMessages(messages)
-    })
-  }
 
   const getChatlist = async () => {
     const data = await db
@@ -70,16 +53,17 @@ function App() {
     })
   }
 
+  const getActiveChatMessages = async () => {
 
-  const getActiveChatMessages = () => {
-    
-    setActiveChatMessages(
-      allMyMessages.filter(
-        (message) => 
-          message.receiverEmail === (activeChat.email || user.email) ||
-          message.senderEmail === (activeChat.email || user.email)
-        )
-    )
+    const data = await db
+    .collection('chats')
+    .doc(user.email)
+    .collection(activeChat.email)
+    .orderBy('timeStamp', 'asc')
+    .onSnapshot((snapShot) => {
+      let messages = snapShot.docs.map((doc) => doc.data())
+      setActiveChatMessages(messages)
+    })
   }
 
   const getAllUsers = async () => {
@@ -113,6 +97,11 @@ function App() {
       photoURL: photoURL
     })
 
+    const date = new Date();
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const currentTime = `${hours}:${minutes}`;
+
     let chat = chatlist.filter(chat => chat.email === email)
 
     db.collection('friendlist').doc(user.email).collection('list').doc(chat[0].email).set({
@@ -121,7 +110,8 @@ function App() {
       photoURL: chat[0].photoURL,
       lastMessage: chat[0].lastMessage,
       timeStamp: chat[0].timeStamp,
-      visited: true
+      visited: true,
+      hour: chat[0].hour
   })
 
   }
@@ -159,7 +149,7 @@ function App() {
           <div className='messages-div'>
             <div className='search-div'>
               <div className='search'>
-                <input autocomplete="off" spellCheck='false' placeholder='Pesquisar' type="text" />
+                <input autoComplete="off" spellCheck='false' placeholder='Pesquisar' type="text" />
                 <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11ZM11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C13.125 20 15.078 19.2635 16.6177 18.0319L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L18.0319 16.6177C19.2635 15.078 20 13.125 20 11C20 6.02944 15.9706 2 11 2Z" fill="#97999c"/>
                 </svg>
@@ -174,6 +164,7 @@ function App() {
                   onClick={()=>{
                     setChatInfos(chat.email, chat.fullname, chat.photoURL)
                   }}
+                  hour={chat.hour}
                   img={chat.photoURL}
                   name={chat.fullname}
                   lastMessage={chat.lastMessage}
@@ -191,6 +182,7 @@ function App() {
             user={user}
             activeChat={activeChat}
             activeChatMessages={activeChatMessages}
+            chatlist={chatlist}
           />
         }
         {activeChat.fullname === undefined && 
