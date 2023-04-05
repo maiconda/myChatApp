@@ -31,9 +31,10 @@
     flex: 1;
     height: 100%;
     margin-left: 10px;
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    width: calc(100% - 100px);
+    padding-right: 10px;
+    box-sizing: border-box;
 }
 
 .chatListenner-div1 h3{
@@ -42,10 +43,10 @@
     margin-bottom: 2px;
     color: #202020;
     margin-top: 5px;
+    width: 100%; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 243px;
 }
 
 .lastmessage{
@@ -53,10 +54,10 @@
     font-size: 14px;
     color: #85878a;
     font-weight: 500;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 243px;
 }
 
 .chatListenner-div2{
@@ -72,6 +73,7 @@
     font-size: 13px;
     font-weight: 500;
     width: 100%;
+    text-align: center;
 }
 
 .chatListenner-notification{
@@ -80,6 +82,7 @@
     background-color: #F95871;
     margin-top: 8px;
     border-radius: 100%;
+    transition: .2s;
 }
 
 .chatActive{
@@ -89,86 +92,16 @@
 }
 .notification-none{
     opacity: 0;
+    transition: .2s;
 }
 
 .lastmessage-notification{
     color: #504f4f;
     font-weight: 600;
+    transition: .2s;
 }
 
-@media (max-width: 870px){
-
-    .chatListenner-div1 h3, .lastmessage{
-        width: 150px;
-    }
-}
-
-@media (max-width: 700px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 350px;
-    }
-}
-
-@media (max-width: 550px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 270px;
-    }
-}
-
-@media (max-width: 450px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 260px;
-    }
-
-    .chatListenner-div2{
-        display: none;
-    }
-}
-
-@media (max-width: 407px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 240px;
-    }
-}
-
-@media (max-width: 390px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 220px;
-    }
-}
-
-@media (max-width: 370px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 200px;
-    }
-}
-
-@media (max-width: 350px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 180px;
-    }
-}
-
-@media (max-width: 320px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 150px;
-    }
-}
-
-@media (max-width: 290px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 120px;
-    }
-}
-
-@media (max-width: 260px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 100px;
-    }
-}
-
-@media (max-width: 240px){
-    .chatListenner-div1 h3, .lastmessage{
-        width: 800px;
-    }
+.lastmessage-not-notification{
+    color: #85878a;
+    transition: .2;
 }

@@ -91,28 +91,28 @@ function App() {
   }
 
   const setChatInfos = (email, fullname, photoURL) => {
-    setActiveChat({
-      email: email,
-      fullname: fullname,
-      photoURL: photoURL
-    })
 
-    const date = new Date();
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const currentTime = `${hours}:${minutes}`;
+    if(email != activeChat.email){
+      setActiveChat({
+        email: email,
+        fullname: fullname,
+        photoURL: photoURL
+      })
+    }
 
     let chat = chatlist.filter(chat => chat.email === email)
 
-    db.collection('friendlist').doc(user.email).collection('list').doc(chat[0].email).set({
-      email: chat[0].email,
-      fullname: chat[0].fullname,
-      photoURL: chat[0].photoURL,
-      lastMessage: chat[0].lastMessage,
-      timeStamp: chat[0].timeStamp,
-      visited: true,
-      hour: chat[0].hour
-  })
+    if(chat.length === 1){
+      db.collection('friendlist').doc(user.email).collection('list').doc(chat[0].email).set({
+        email: chat[0].email,
+        fullname: chat[0].fullname,
+        photoURL: chat[0].photoURL,
+        lastMessage: chat[0].lastMessage,
+        timeStamp: chat[0].timeStamp,
+        visited: true,
+        hour: chat[0].hour
+    })
+  }
 
   }
 
@@ -134,7 +134,6 @@ function App() {
         allUsersStatic={allUsersStatic}
         setChatInfos={setChatInfos}
         />
-
           <div className='sidebar-header'>
             <div className='sidebar-infos'>
               <img onClick={openDashboard} src={user.photoURL} alt="" />
@@ -173,6 +172,14 @@ function App() {
                   lastMessageClass={chat.visited === false && 'lastmessage-notification'}
                 />
               ))}
+            </div>
+          </div>
+
+          <div className='navbar-mobile'>
+            <div></div>
+            <div></div>
+            <div>
+              <img src={user.photoURL} alt="" />
             </div>
           </div>
       </section>

@@ -66,6 +66,7 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist}) {
     }
 
     const removeNotification = (email) => {
+
         let chat = chatlist.filter(chat => chat.email === email)
 
         db.collection('friendlist').doc(user.email).collection('list').doc(chat[0].email).set({
@@ -74,7 +75,8 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist}) {
           photoURL: chat[0].photoURL,
           lastMessage: chat[0].lastMessage,
           timeStamp: chat[0].timeStamp,
-          visited: true
+          visited: true,
+          hour: chat[0].hour
       })
     }
 

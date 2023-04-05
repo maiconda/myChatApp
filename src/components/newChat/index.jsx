@@ -48,12 +48,15 @@ function NewChat({allUsers, setAllUsers, allUsersStatic, setChatInfos}){
                     img={user.data().photoURL}
                     email={user.data().email}
                     onClick={()=> {
+
+                        exitNewMessages()
+
                         setChatInfos(
                             user.data().email,
                             user.data().fullname,
                             user.data().photoURL
                         )
-                        exitNewMessages()
+
                     }}
                 />
             ))}

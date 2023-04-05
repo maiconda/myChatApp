@@ -3,7 +3,8 @@ import './index.css'
 function ChatListItem (props) {
     return (
         <div onClick={props.onClick} className={`chatListenner ${props.classActive}`}>
-            <img src={props.img} alt="" />
+            <div><img src={props.img} alt="" /></div>
+            
             <div className='chatListenner-div1'>
                 <div>
                     <h3>{props.name}</h3>
