@@ -148,12 +148,22 @@ body{
 
 .navbar-mobile{
     width: 100%;
-    height: 60px;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    align-items: end;
+}
+
+.navbar-mobile img{
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
 }
 
 .navbar-mobile div{
-    height: 100%;
-    background-color: #f4f6fb;
+    width: 100%;
+    height: 60px;
+    background-color: #ff0000;
 }
 
 @media (max-width: 870px){
@@ -166,7 +176,6 @@ body{
     .sidebar{
         width: 100%;
         padding: 0;
-        position: absolute;
     }
 
     .sidebar-header{
@@ -176,6 +185,7 @@ body{
     .messages-div{
         border-radius: 0;
         height: calc(100% - 60px);
+        position: absolute;
     }
 
     .search{
