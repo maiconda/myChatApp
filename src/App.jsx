@@ -81,7 +81,11 @@ function App() {
   }
 
   const openNewMessages = () => {
-    document.querySelector('.newChat').style.bottom = '20px'
+    if(window.innerWidth <= 700){
+      document.querySelector('.newChat').style.bottom = '0'
+    } else {
+      document.querySelector('.newChat').style.bottom = '20px'
+    }
   }
 
   const openDashboard = () => {

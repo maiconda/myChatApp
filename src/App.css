@@ -151,6 +151,8 @@ body{
     height: 60px;
     display: none;
     justify-content: space-around;
+    border-top: 1px solid black;
+
 }
 
 .navbar-mobile img{
@@ -161,7 +163,6 @@ body{
 
 .navbar-mobile div{
     height: 100%;
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,16 +171,6 @@ body{
     font-weight: 600;
     border-bottom: 4px solid transparent;
     border-bottom: 1px solid #ecedf0;
-}
-
-.mobile-1{
-    border-bottom-left-radius: 20px;
-    border-left: 1px solid #ecedf0;
-}
-
-.mobile-3{
-    border-bottom-right-radius: 20px;
-    border-right: 1px solid #ecedf0;
 }
 
 @media (max-width: 870px){
@@ -192,7 +183,7 @@ body{
     .sidebar{
         width: 100%;
         box-sizing: border-box;
-        padding: 15px;
+        padding: 0;
     }
 
     .navbar-mobile{
@@ -204,11 +195,11 @@ body{
     }
 
     .messages-div{
-        border-radius: 20px;
+        border-radius: 0;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        height: calc(100% - 35px);
-        width: calc(100% - 30px);
+        height: calc(100%);
+        width: calc(100%);
         box-sizing: border-box;
         position: absolute;
     }
