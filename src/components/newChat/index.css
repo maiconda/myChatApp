@@ -58,8 +58,11 @@
 
 @media (max-width: 700px){
     .newChat{
-        width: calc(100% - 40px);
+        width: calc(100% - 30px);
+        height: calc(100% - 35px);
         box-sizing: border-box;
+        position: absolute;
+        z-index: 1;
     }
 }
 

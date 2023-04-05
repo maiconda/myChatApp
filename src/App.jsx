@@ -173,12 +173,12 @@ function App() {
                 />
               ))}
             </div>
-          </div>
 
-          <div className='navbar-mobile'>
+            <div className='navbar-mobile'>
             <div className='mobile-1'>Mensagens</div>
-            <div className='mobile-2'>Nova Mensagem</div>
+            <div className='mobile-2' onClick={openNewMessages}>Nova Mensagem</div>
             <div className='mobile-3'>Perfil</div>
+          </div>
           </div>
       </section>
       <section className="content">

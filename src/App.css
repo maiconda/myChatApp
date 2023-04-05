@@ -149,7 +149,7 @@ body{
 .navbar-mobile{
     width: 100%;
     height: 60px;
-    display: flex;
+    display: none;
     justify-content: space-around;
 }
 
@@ -165,14 +165,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 33.33%;
+    font-weight: 600;
+    border-bottom: 4px solid transparent;
+    border-bottom: 1px solid #ecedf0;
 }
 
-.navbar-mobile div:last-child{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.mobile-1{
+    border-bottom-left-radius: 20px;
+    border-left: 1px solid #ecedf0;
+}
+
+.mobile-3{
+    border-bottom-right-radius: 20px;
+    border-right: 1px solid #ecedf0;
 }
 
 @media (max-width: 870px){
@@ -184,9 +191,12 @@ body{
 @media (max-width: 700px){
     .sidebar{
         width: 100%;
-        padding: 0;
         box-sizing: border-box;
-        position: absolute;
+        padding: 15px;
+    }
+
+    .navbar-mobile{
+        display: flex;
     }
 
     .sidebar-header{
@@ -194,9 +204,18 @@ body{
     }
 
     .messages-div{
-        border-radius: 0;
-        height: calc(100% - 60px);
+        border-radius: 20px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: calc(100% - 35px);
+        width: calc(100% - 30px);
         box-sizing: border-box;
+        position: absolute;
+    }
+
+    .chats{
+        overflow-y: auto;
+        height: calc(100% - 130px);
     }
 
     .search{
@@ -204,9 +223,6 @@ body{
         margin-bottom: 15px;
     }
 
-    .search-div{
-        padding-top: 15px;
-    }
     .search input{
         height: 40px;
     } 
