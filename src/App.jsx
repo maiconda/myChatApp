@@ -176,11 +176,9 @@ function App() {
           </div>
 
           <div className='navbar-mobile'>
-            <div></div>
-            <div></div>
-            <div>
-              <img src={user.photoURL} alt="" />
-            </div>
+            <div className='mobile-1'>Mensagens</div>
+            <div className='mobile-2'>Nova Mensagem</div>
+            <div className='mobile-3'>Perfil</div>
           </div>
       </section>
       <section className="content">
