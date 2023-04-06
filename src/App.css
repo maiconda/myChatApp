@@ -227,6 +227,7 @@ body{
     .search{
         height: 45px;
         margin-bottom: 15px;
+        overflow-y: hidden;
     }
 
     .search-div-1{
@@ -249,6 +250,7 @@ body{
         left: -100vh;
         transition: .3s;
         padding: 0;
+        overflow-y: hidden;
     }
 }
 
