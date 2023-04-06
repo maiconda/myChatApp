@@ -8,6 +8,7 @@ main{
 body{
     background-color: #f4f6fb;
     overflow: hidden;
+    padding-top: env(safe-area-inset-top);
 }
 
 .sidebar{

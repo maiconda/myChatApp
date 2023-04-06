@@ -124,6 +124,22 @@ function App() {
 
   }
 
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  
+  let lastScrollTop = 0;
+  
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+    if (scrollTop < lastScrollTop) {
+      window.scrollTo(0, 0);
+    }
+  
+    lastScrollTop = scrollTop;
+  });  
+  
   return (
   <Fragment>
   {user ? 
