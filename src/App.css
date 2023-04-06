@@ -2,7 +2,7 @@ main{
     display: flex;
     max-width: 1400px;
     margin: 0 auto;
-    
+    overflow: hidden;
 }
 
 body{
@@ -244,7 +244,7 @@ body{
     .content{
         position: absolute;
         width: 100%;
-        right: -100vh;
+        left: -100vh;
         transition: .3s;
         padding: 0;
     }

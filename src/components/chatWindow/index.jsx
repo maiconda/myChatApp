@@ -4,7 +4,7 @@ import MessageItem from '../messageItem'
 import firebase from 'firebase'
 import db from '../../firebase'
 
-function ChatWindow({activeChat, user, activeChatMessages, chatlist}) {
+function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveChat}) {
 
     const [message, setMessage] = useState('')
 
@@ -80,10 +80,14 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist}) {
       })
     }
 
-    const exit = () =>{
+    console.log(activeChat)
+
+    const exitChat = () =>{
         if(window.innerWidth <= 700){
-            document.getElementById('content').style.right = '-100'
-            console.log('a')
+            document.querySelector('.content').style.left = '-100vh'
+            setTimeout(() => {
+                setActiveChat({})
+            }, 300);
         }
     }
 
@@ -95,7 +99,7 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist}) {
                     <h3>{activeChat.fullname}</h3>
                 </div>
 
-                <div onClick={exit} className='newChat-back'>
+                <div onClick={exitChat} className='newChat-back'>
                     <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="Arrow / Arrow_Undo_Up_Left">
                     <path id="Vector" d="M7 13L3 9M3 9L7 5M3 9H16C18.7614 9 21 11.2386 21 14C21 16.7614 18.7614 19 16 19H11" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

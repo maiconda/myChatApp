@@ -119,7 +119,7 @@ function App() {
   }
   
   if(window.innerWidth <= 700){
-    document.querySelector('.content').style.right = '0'
+    document.querySelector('.content').style.left = '0'
   }
 
   }
@@ -209,6 +209,7 @@ function App() {
             activeChat={activeChat}
             activeChatMessages={activeChatMessages}
             chatlist={chatlist}
+            setActiveChat={setActiveChat}
           />
         }
         {activeChat.fullname === undefined && 
