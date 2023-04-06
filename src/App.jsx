@@ -7,6 +7,7 @@ import NewChat from './components/newChat'
 import Login from './components/login'
 import Popups from './components/popups'
 import db, { auth } from './firebase'
+import ScrollFix from './components/scrollFix'
 
 function App() {
 
@@ -124,26 +125,11 @@ function App() {
 
   }
 
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-  
-  let lastScrollTop = 0;
-  
-  window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  
-    if (scrollTop < lastScrollTop) {
-      window.scrollTo(0, 0);
-    }
-  
-    lastScrollTop = scrollTop;
-  });  
-  
   return (
   <Fragment>
+  <ScrollFix/>
   {user ? 
-  <Fragment>
+    <Fragment>
           <Popups
           user={user}
           signOut={signOut}
