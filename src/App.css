@@ -245,6 +245,7 @@ body{
         box-sizing: border-box;
         position: absolute;
         width: 100%;
+        height: calc(100%);
         left: -100vh;
         transition: .3s;
         padding: 0;
