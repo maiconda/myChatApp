@@ -27,16 +27,6 @@
     font-size: 21px;
 }
 
-.newChat-back{
-    height: 44px;
-    width: 44px;
-    border-radius: 10px;
-    background-color: #2781E3;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .newChat-users{
     width: 100%;
@@ -54,6 +44,12 @@
 
 .newChat-users::-webkit-scrollbar-thumb {
     background-color: #e8eaee;
+}
+
+@media (max-width: 870px){
+    .newChat{
+        width: 310px;
+    }
 }
 
 @media (max-width: 700px){

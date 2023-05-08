@@ -84,7 +84,7 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
 
     const exitChat = () =>{
         if(window.innerWidth <= 700){
-            document.querySelector('.content').style.left = '-100vh'
+            document.querySelector('.content').style.left = '-150vh'
             setTimeout(() => {
                 setActiveChat({})
             }, 300);
@@ -95,8 +95,12 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
         <div onClick={() => {removeNotification(activeChat.email)}} className='chatwindow'>
             <div className='chatWindowHeader'>
                 <div className='chatWindowHeader-div1'>
+                    <div>
                     <img src={activeChat.photoURL} alt="" />
+                    </div>
+                    <div>
                     <h3>{activeChat.fullname}</h3>
+                    </div>
                 </div>
 
                 <div onClick={exitChat} className='newChat-back'>

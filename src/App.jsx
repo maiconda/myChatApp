@@ -7,10 +7,11 @@ import NewChat from './components/newChat'
 import Login from './components/login'
 import Popups from './components/popups'
 import db, { auth } from './firebase'
-import ScrollFix from './components/scrollFix'
+
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 function App() {
-
 
   const [chatlist, setChatlist] = useState([])
   const [activeChat, setActiveChat] = useState({})
@@ -24,6 +25,7 @@ function App() {
     getAllUsers()
     setAllUsers(allUsersStatic)
   }, [])
+
 
   useEffect(() => {
     getChatlist()
@@ -43,34 +45,40 @@ function App() {
   }, [activeChat])
 
   const getChatlist = async () => {
-    const data = await db
-    .collection('friendlist')
-    .doc(user.email)
-    .collection('list')
-    .orderBy('timeStamp', 'asc')
-    .onSnapshot((snapShot) => {
-      let chat = snapShot.docs.map((doc) => doc.data())
-      setChatlist(chat.reverse())
-    })
+
+    if(user != null){
+      const data = await db
+      .collection('friendlist')
+      .doc(user.email)
+      .collection('list')
+      .orderBy('timeStamp', 'asc')
+      .onSnapshot((snapShot) => {
+        let chat = snapShot.docs.map((doc) => doc.data())
+        setChatlist(chat.reverse())
+      })
+    }
   }
 
   const getActiveChatMessages = async () => {
-
-    const data = await db
-    .collection('chats')
-    .doc(user.email)
-    .collection(activeChat.email)
-    .orderBy('timeStamp', 'asc')
-    .onSnapshot((snapShot) => {
-      let messages = snapShot.docs.map((doc) => doc.data())
-      setActiveChatMessages(messages)
-    })
+    if(user != null){
+      const data = await db
+      .collection('chats')
+      .doc(user.email)
+      .collection(activeChat.email)
+      .orderBy('timeStamp', 'asc')
+      .onSnapshot((snapShot) => {
+        let messages = snapShot.docs.map((doc) => doc.data())
+        setActiveChatMessages(messages)
+      })
+    }
   }
 
   const getAllUsers = async () => {
-    const data = await db.collection('users').onSnapshot(snapshot => {
-      setAllUsersStatic(snapshot.docs.filter((doc) => doc.data().email !== user.email))
-    })
+    if(user != null){
+      const data = await db.collection('users').onSnapshot(snapshot => {
+        setAllUsersStatic(snapshot.docs.filter((doc) => doc.data().email !== user.email))
+      })
+    }
   }
 
   const signOut = () => {
@@ -78,6 +86,7 @@ function App() {
     .then(() => {
       setUser(null)
       localStorage.removeItem('user')
+      setActiveChat({})
     })
   }
 
@@ -127,9 +136,8 @@ function App() {
 
   return (
   <Fragment>
-  <ScrollFix/>
   {user ? 
-    <Fragment>
+  <Fragment>
           <Popups
           user={user}
           signOut={signOut}
@@ -146,8 +154,12 @@ function App() {
         />
           <div className='sidebar-header'>
             <div className='sidebar-infos'>
+              <div>
               <img onClick={openDashboard} src={user.photoURL} alt="" />
+              </div>
+              <div>
               <h3 onClick={openDashboard}>{user.fullname}</h3>
+              </div>
             </div>
             <div onClick={openNewMessages} className='newMessage'>
               <svg width="27px" height="27px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
@@ -155,6 +167,9 @@ function App() {
               </svg>
             </div>
           </div>
+
+
+          
           <div className='messages-div'>
             <div className='responsive-search'>
               <img src={user.photoURL} alt="" />
@@ -215,7 +230,11 @@ function App() {
           />
         }
         {activeChat.fullname === undefined && 
-          <ChatIntro/>
+          <ChatIntro
+            feedback={()=>{
+              setActiveChat({email: 'maicondeoliveiradasilva24@gmail.com', fullname: 'Maicon de Oliveira da Silva', photoURL: 'https://lh3.googleusercontent.com/a/AGNmyxZC3_0JLqixgWCCQFya8OkKv3TaGT056FlmPpev=s96-c'})
+            }}
+          />
         }
       </section>
     </main>

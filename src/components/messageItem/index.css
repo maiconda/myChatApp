@@ -75,9 +75,7 @@
 }
 
 @media (max-width: 700px){
-    @media (max-width: 750px){
-        .message-item{
-            max-width: 80%;
-        }
+    .message-item{
+        max-width: 80%;
     }
 }
