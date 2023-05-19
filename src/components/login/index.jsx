@@ -77,7 +77,7 @@ function Login({ setUser }) {
 
             <a target='_blank' href="https://portfoliomaicon.netlify.app/">
             <div>
-            <svg width="30'px" height="30px" fill='#fff' version="1.1" id="_x32_"  viewBox="0 0 512 512" >
+            <svg width="30px" height="30px" fill='#fff' version="1.1" id="_x32_"  viewBox="0 0 512 512" >
                 <g>
                   <path d="M464,0H48C21.492,0,0,21.492,0,48v416c0,26.508,21.492,48,48,48h416c26.508,0,48-21.492,48-48V48
                     C512,21.492,490.508,0,464,0z M444.664,35c10.492,0,19,8.508,19,19s-8.508,19-19,19c-10.492,0-19-8.508-19-19

@@ -10,6 +10,8 @@
 
 .message-item p{
     margin: 0;
+    word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .message-item p:first-child{

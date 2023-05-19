@@ -15,10 +15,10 @@
     margin: 0;
     font-size: 20px;
     color: #050609;
-    width: 100%;
+    /* width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
 }
 
 .chatwindow{
@@ -37,7 +37,7 @@
 .chatWindowHeader-div1{
     display: flex;
     align-items: center;
-    width: calc(100% - 50px);
+    width: calc(100%);
     box-sizing: border-box;
 }
 
@@ -119,7 +119,7 @@
 
 .newChat-back{
     height: 44px;
-    width: 44px;
+    min-width: 44px;
     border-radius: 10px;
     background-color: #2781E3;
     cursor: pointer;
@@ -128,12 +128,17 @@
     justify-content: center;
 }
 
+.chatWindow-back{
+    margin-left: 15px;
+    display: none;
+}
+
 @media (max-width: 700px){
 
-    .newChat-back{
+    .chatWindow-back{
         display: flex;
     }
-
+    
     .chatWindowHeader{
         border-radius: 0;
         height: 72px;
