@@ -172,7 +172,7 @@ function App() {
           
           <div className='messages-div'>
             <div className='responsive-search'>
-              <img src={user.photoURL} alt="" />
+              <img onClick={openDashboard} src={user.photoURL} alt="" />
               <div className='search-div search-div-1'>
                 <div className='search'>
                   <input autoComplete="off" spellCheck='false' placeholder='Pesquisar' type="text" />
