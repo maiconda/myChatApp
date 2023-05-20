@@ -6,11 +6,22 @@ function Popups(props) {
 
 
         document.querySelector('.popups').style.opacity = '0'
-        
+        document.querySelector('.dashboard').style.opacity = '0'
         setTimeout(() => {
             document.querySelector('.popups').style.zIndex = '-1'
+            document.querySelector('.dashboard').style.zIndex = '-1'
         }, 300);
         
+    }
+
+    const closeUserProfile = () => {
+      
+      document.querySelector('.popups').style.opacity = '0'
+      document.querySelector('.userProfile').style.opacity = '0'
+      setTimeout(() => {
+        document.querySelector('.popups').style.zIndex = '-1'
+        document.querySelector('.userProfile').style.zIndex = '-1'
+      }, 150);
     }
 
     return(
@@ -34,6 +45,16 @@ function Popups(props) {
             </div>
             <button onClick={props.signOut}>Sair</button>
           </div>
+          </div>
+        </div>
+        <div className='userProfile'>
+          <div>
+            <img src={props.profile.photoURL} alt="" />
+            <div className='userProfile-div'>
+              <h1>{props.profile.fullname}</h1>
+              <p>{props.profile.email}</p>
+            </div>
+            <button onClick={closeUserProfile}>Fechar</button>
           </div>
         </div>
       </section>

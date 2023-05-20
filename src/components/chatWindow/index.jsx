@@ -33,8 +33,7 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
                 timeStamp: firebase.firestore.Timestamp.now(),
                 hour: currentTime
             }
-    
-            console.log(payload)
+
     
             db.collection('chats').doc(user.email).collection(activeChat.email).add(payload)
     
@@ -91,10 +90,21 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
         }
     }
 
+    const openUserProfile = () => {
+        document.querySelector('.userProfile').style.zIndex = '1'
+        document.querySelector('.popups').style.zIndex = '1'
+        setTimeout(() => {
+          document.querySelector('.popups').style.opacity = '100%'
+          document.querySelector('.userProfile').style.opacity = '100%'
+        }, 150);
+
+        console.log("aço")
+      }
+
     return (
         <div onClick={() => {removeNotification(activeChat.email)}} className='chatwindow'>
             <div className='chatWindowHeader'>
-                <div className='chatWindowHeader-div1'>
+                <div onClick={openUserProfile} className='chatWindowHeader-div1'>
                     <div>
                     <img src={activeChat.photoURL} alt="" />
                     </div>

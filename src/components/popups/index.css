@@ -19,6 +19,7 @@
     border-radius: 20px;
     border: 1px solid #ecedf086;
     position: absolute;
+    opacity: 0;
 }
 
 .closedash-div{
@@ -53,13 +54,13 @@
     height: 100%;
 }
 
-.dashboard-infos img{
+.dashboard-infos img, .userProfile img{
     border-radius: 30px;
     height: 170px;
     width: 170px;
 }
 
-.dashboard-infos-div{
+.dashboard-infos-div, .userProfile-div{
     background-color: #f4f6fb7a;
     border: 1px solid #dadaddfd;
     margin: 20px 25px;
@@ -67,7 +68,7 @@
     padding: 18px;
 }
 
-.dashboard-infos h3{
+.dashboard-infos h3, .userProfile h1{
     text-align: center;
     font-size: 27px;
     margin: 0;
@@ -77,14 +78,14 @@
     color: 050609;
 }
 
-.dashboard-infos p{
+.dashboard-infos p, .userProfile p{
     margin: 0;
     color: #666869;
     font-weight: 500;
     word-break: break-all;
 }
 
-.dashboard button{
+.dashboard button , .userProfile button{
     background-color: #2781E3;
     margin: 0;
     font-size: 22px;
@@ -98,8 +99,23 @@
     cursor: pointer;
 }
 
+.userProfile{
+    height: 450px;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #ecedf086;
+    position: absolute;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
 @media (max-width: 700px){
-    .dashboard{
+    .dashboard, .userProfile{
         height: 100%;
         width: 100%;
         box-sizing: border-box;
