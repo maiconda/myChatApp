@@ -59,6 +59,10 @@ function App() {
         let chat = snapShot.docs.map((doc) => doc.data())
         setChatlist(chat.reverse())
         setChatlistStatic(chat)
+        setTimeout(() => {
+          document.querySelector('.chats').style.display = "block"
+          document.querySelector('.chat-loading').style.display = "none"
+        }, 100);
       })
     }
   }
@@ -198,9 +202,11 @@ function App() {
               </div>
             </div>
 
-
+            <div className='chat-loading'>
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>
             <div className='chats'>
-              {chatlist.length === 0 ? (
+              {chatlistStatic.length === 0 ? (
                 <div onClick={openNewMessages} className='iniciar-conversa'>Nova Conversa</div>
               ) : 
                 chatlist.map((chat,index)=>(
