@@ -21,7 +21,7 @@
 .login-text{
     width: 100%;
     margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .login-text h1{
@@ -33,6 +33,13 @@
     margin: 0;
     letter-spacing: -1px;
     color: #00195f;
+}
+
+.login-text p{
+    text-align: center;
+    font-weight: 600;
+    color: #00195fb9;
+    font-size: 18px;
 }
 
 .google-button div:first-child{

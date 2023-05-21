@@ -159,19 +159,19 @@ body{
 
 .navbar-mobile{
     display: none;
-    justify-content: space-around;
+    justify-content: center;
     position: absolute;
     width: 50px;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 20px;
-
-    border-radius: 15px;
-
+    border-radius: 10px;
     display: none;
     align-items: center;
     cursor: pointer;
+    width: 50px;
+    height: 50px;
 }
 
 .responsive-search{
@@ -186,6 +186,19 @@ body{
     margin-left: 20px;
     border-radius: 100%;
     display: none;
+}
+
+.iniciar-conversa{
+    background-color: #2781E3;
+    margin: 20px;
+    margin-top: 0;
+    padding: 10px;
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
 }
 
 @media (max-width: 870px){

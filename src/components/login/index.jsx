@@ -29,6 +29,7 @@ function Login({ setUser }) {
 
           <div className='login-text'>
             <h1>My Chat App</h1>
+            <p>Desenvolvido por Maicon da Silva</p>
           </div>
 
           <div className='google-button' onClick={signInWithGoogle}>

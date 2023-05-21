@@ -9,7 +9,7 @@ function NewChat({allUsers, setAllUsers, allUsersStatic, setChatInfos}){
         if (input === '') {
             setAllUsers(allUsersStatic)
         } else {
-            setAllUsers(allUsersStatic.filter((doc) => doc.data().fullname.toLowerCase().startsWith(input) || doc.data().email.toLowerCase().startsWith(input)))
+            setAllUsers(allUsersStatic.filter((doc) => doc.data().fullname.toLowerCase().startsWith(input) || doc.data().email.toLowerCase().startsWith(input.toLowerCase())))
         }
     }
 

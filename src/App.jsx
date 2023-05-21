@@ -11,6 +11,8 @@ import db, { auth } from './firebase'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+
+
 function App() {
 
   const [chatlist, setChatlist] = useState([])
@@ -56,6 +58,7 @@ function App() {
       .onSnapshot((snapShot) => {
         let chat = snapShot.docs.map((doc) => doc.data())
         setChatlist(chat.reverse())
+        setChatlistStatic(chat)
       })
     }
   }
@@ -134,9 +137,7 @@ function App() {
   
   if(window.innerWidth <= 700){
     document.querySelector('.content').style.left = '0'
-  }
-
-
+    }
   }
 
   return (
@@ -181,7 +182,15 @@ function App() {
               <img onClick={openDashboard} src={user.photoURL} alt="" />
               <div className='search-div search-div-1'>
                 <div className='search'>
-                  <input autoComplete="off" spellCheck='false' placeholder='Pesquisar' type="text"/>
+                  <input autoComplete="off" spellCheck='false' placeholder='Pesquisar' onChange={(e) => {
+                    console.log(e.target.value)
+
+                    if (e.target.value === '') {
+                        setChatlist(chatlistStatic)
+                    } else {
+                        setChatlist(chatlistStatic.filter((doc) => doc.fullname.toLowerCase().startsWith(e.target.value.toLocaleLowerCase())))
+                    }
+                  }} type="text"/>
                   <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fillRule="evenodd" clipRule="evenodd" d="M4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11ZM11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C13.125 20 15.078 19.2635 16.6177 18.0319L20.2929 21.7071C20.6834 22.0976 21.3166 22.0976 21.7071 21.7071C22.0976 21.3166 22.0976 20.6834 21.7071 20.2929L18.0319 16.6177C19.2635 15.078 20 13.125 20 11C20 6.02944 15.9706 2 11 2Z" fill="#97999c"/>
                   </svg>
@@ -191,29 +200,34 @@ function App() {
 
 
             <div className='chats'>
-              {chatlist.map((chat,index)=>(
-                <ChatListItem
-                  key={index}
-
-                  onClick={()=>{
-                    setChatInfos(chat.email, chat.fullname, chat.photoURL)
-                  }}
-                  hour={chat.hour}
-                  img={chat.photoURL}
-                  name={chat.fullname}
-                  lastMessage={chat.lastMessage}
-                  classActive={activeChat.email === chat.email && 'chatActive'}
-                  notificationClass={chat.visited === true && 'notification-none'}
-                  lastMessageClass={chat.visited === false && 'lastmessage-notification'}
-                />
-              ))}
+              {chatlist.length === 0 ? (
+                <div onClick={openNewMessages} className='iniciar-conversa'>Nova Conversa</div>
+              ) : 
+                chatlist.map((chat,index)=>(
+                  <ChatListItem
+                    key={index}
+  
+                    onClick={()=>{
+                      setChatInfos(chat.email, chat.fullname, chat.photoURL)
+                    }}
+                    hour={chat.hour}
+                    img={chat.photoURL}
+                    name={chat.fullname}
+                    lastMessage={chat.lastMessage}
+                    classActive={activeChat.email === chat.email && 'chatActive'}
+                    notificationClass={chat.visited === true && 'notification-none'}
+                    lastMessageClass={chat.visited === false && 'lastmessage-notification'}
+                  />
+                ))
+              }
+              {}
             </div>
 
             <div onClick={openNewMessages} className='navbar-mobile'>
               <svg width="35px" height="35px" viewBox="0 -4.5 20 20" version="1.1">
 
               <g id="Page-1" stroke="none" strokeWidth="0.2" fill="none" fillRule="evenodd">
-                  <g id="Dribbble-Light-Preview" transform="translate(-260.000000, -6684.000000)" fill="#202020">
+                  <g id="Dribbble-Light-Preview" transform="translate(-260.000000, -6684.000000)" fill="#000">
                       <g id="icons" transform="translate(56.000000, 160.000000)">
                           <path d="M223.707692,6534.63378 L223.707692,6534.63378 C224.097436,6534.22888 224.097436,6533.57338 223.707692,6533.16951 L215.444127,6524.60657 C214.66364,6523.79781 213.397472,6523.79781 212.616986,6524.60657 L204.29246,6533.23165 C203.906714,6533.6324 203.901717,6534.27962 204.282467,6534.68555 C204.671211,6535.10081 205.31179,6535.10495 205.70653,6534.69695 L213.323521,6526.80297 C213.714264,6526.39807 214.346848,6526.39807 214.737591,6526.80297 L222.294621,6534.63378 C222.684365,6535.03868 223.317949,6535.03868 223.707692,6534.63378" id="arrow_up-[#337]">
 
