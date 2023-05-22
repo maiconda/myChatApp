@@ -207,7 +207,7 @@ function App() {
             </div>
 
             <div className='chat-loading'>
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
             </div>
             <div className='chats'>
               {chatlistStatic.length === 0 ? (

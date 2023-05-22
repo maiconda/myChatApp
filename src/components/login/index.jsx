@@ -12,7 +12,6 @@ function Login({ setUser }) {
           photoURL: result.user.photoURL,
           presence: 'online'
         }
-        console.log(result)
         setUser(newUser)
         localStorage.setItem('user', JSON.stringify(newUser))
         db.collection('users').doc(result.user.email).set(newUser)

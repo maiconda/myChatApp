@@ -85,8 +85,6 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
       })
     }
 
-    console.log(activeChat)
-
     const exitChat = () =>{
         if(window.innerWidth <= 700){
             document.querySelector('.content').style.left = '-150vh'
@@ -104,7 +102,6 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
           document.querySelector('.userProfile').style.opacity = '100%'
         }, 150);
 
-        console.log("aço")
       }
 
     return (
@@ -157,7 +154,7 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
             </div>
 
             <form onSubmit={sendMessage} className='chatwindow-inputdiv'>
-                <input autoComplete="false" id='sendInput' placeholder='Digite sua mensagem' onChange={(e)=> setMessage(e.target.value)} className='chatwindow-input' type="text" />
+                <input autoComplete="off" id='sendInput' placeholder='Digite sua mensagem' onChange={(e)=> setMessage(e.target.value)} className='chatwindow-input' type="text" />
                 <button className='send-button'>Enviar</button>
             </form>
         </div>
