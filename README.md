@@ -8,7 +8,7 @@ O projeto em questão se trata de um site de chat em tempo real, com a capacidad
 
 É possível acessar a página a partir do botão a seguir.
 
-[![Blog](https://img.shields.io/badge/MyChatApp-000000?style=for-the-badge&logo=About.me&logoColor=white)]([https://mychatapp-maicon.netlify.app/](https://mychatapp-maicon.netlify.app/))
+[![Blog](https://img.shields.io/badge/MyChatApp-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://mychatapp-maicon.netlify.app/)
 
 ## Layout Mobile
 <img src="img/mobile.jpg" width="250px"/><img src="img/mobile1.jpg" width="250px"/><img src="img/mobile2.jpg" width="250px"/><img src="img/mobile3.jpg" width="250px"/><img src="img/mobile4.jpg" width="250px"/>
