@@ -135,7 +135,8 @@ function App() {
         lastMessage: chat[0].lastMessage,
         timeStamp: chat[0].timeStamp,
         visited: true,
-        hour: chat[0].hour
+        hour: chat[0].hour,
+        date: chat[0].date
     })
   }
   
@@ -143,6 +144,11 @@ function App() {
     document.querySelector('.content').style.left = '0'
     }
   }
+
+  const date = new Date();
+  let day = String(date.getDate()).padStart(2, '0');
+  let month = String(date.getMonth() + 1).padStart(2, '0');
+  let actualDate = day + '/' + month
 
   return (
   <Fragment>
@@ -178,8 +184,6 @@ function App() {
               </svg>
             </div>
           </div>
-
-
           
           <div className='messages-div'>
             <div className='responsive-search'>
@@ -216,7 +220,7 @@ function App() {
                     onClick={()=>{
                       setChatInfos(chat.email, chat.fullname, chat.photoURL)
                     }}
-                    hour={chat.hour}
+                    hour={chat.date === actualDate ? chat.hour : chat.date}
                     img={chat.photoURL}
                     name={chat.fullname}
                     lastMessage={chat.lastMessage}
@@ -226,7 +230,7 @@ function App() {
                   />
                 ))
               }
-              {}
+  
             </div>
 
             <div onClick={openNewMessages} className='navbar-mobile'>

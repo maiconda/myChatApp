@@ -25,6 +25,9 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
             const hours = date.getHours().toString().padStart(2, '0');
             const minutes = date.getMinutes().toString().padStart(2, '0');
             const currentTime = `${hours}:${minutes}`;
+
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
             
             let payload = {
                 text: message,
@@ -46,7 +49,8 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
                 lastMessage: message,
                 timeStamp: firebase.firestore.Timestamp.now(),
                 visited: true,
-                hour: currentTime
+                hour: currentTime,
+                date: day + '/' + month
             })
     
             db.collection('friendlist').doc(activeChat.email).collection('list').doc(user.email).set({
@@ -56,7 +60,8 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
                 lastMessage: message,
                 timeStamp: firebase.firestore.Timestamp.now(),
                 visited: false,
-                hour: currentTime
+                hour: currentTime,
+                date: day + '/' + month
             })
 
             setMessage('')
@@ -75,7 +80,8 @@ function ChatWindow({activeChat, user, activeChatMessages, chatlist, setActiveCh
           lastMessage: chat[0].lastMessage,
           timeStamp: chat[0].timeStamp,
           visited: true,
-          hour: chat[0].hour
+          hour: chat[0].hour,
+          date: chat[0].date
       })
     }
 
